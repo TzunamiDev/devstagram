@@ -17,6 +17,7 @@ if [ ! -z "$PORT" ]; then
     sed -i -e "s/--port=80/--port=$PORT/g" /etc/supervisor/conf.d/supervisord.conf
 fi
 
+mv .env.example .env
 cat .env | grep -q APP_KEY=base64
 if [ ! "$?" -eq 0 ]; then
     php artisan key:generate
